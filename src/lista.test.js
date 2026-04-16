@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { getLista, iniciaLista, limpaLista } from "./lista";
+import { getLista, iniciaLista, limpaLista, adicionarItem } from "./lista";
 
 it("deve ter zero elementos após limpar a lista", () => {
   iniciaLista();
@@ -24,3 +24,14 @@ it("alterar a lista retornada, não pode mexer na do módulo", () => {
   const lista2 = getLista();
   expect(lista2.length).toBe(3);
 });
+
+it("Adicionar nome na lista deve aumentar o total", () => {
+  iniciaLista();
+  const lista1 = getLista();
+  expect(lista1.length).toBe(3);
+  adicionarItem("quatro");
+  const lista2 = getLista();
+  expect(lista2.length).toBe(4);
+  expect(lista2[3]).toBe("quatro");
+});
+
